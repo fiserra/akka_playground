@@ -1,4 +1,5 @@
 name := "akka_playground"
+
 import Dependencies._
 
 lazy val commonSettings = Seq(
@@ -7,22 +8,20 @@ lazy val commonSettings = Seq(
   scalaVersion := "2.11.8"
 )
 
-lazy val fp = (project in file("akka-streams")).
+lazy val akka_streams = (project in file("akka-streams")).
   settings(commonSettings: _*).
   settings(
-    libraryDependencies ++= Seq(akka_stream)
+    libraryDependencies ++= Seq(akka_stream_dep, akka_http_core, akka_http_core_experimental, akka_stream_kafka_dep, logback)
   )
 
-lazy val cats = (project in file("akka-persistence")).
+lazy val akka_persistence = (project in file("akka-persistence")).
   settings(commonSettings: _*).
   settings(
-    libraryDependencies ++= Seq(akka_persistence)
+    libraryDependencies ++= Seq(akka_persistence_dep)
   )
 
-lazy val type_classes = (project in file("akka")).
+lazy val akka = (project in file("akka")).
   settings(commonSettings: _*).
   settings(
-    libraryDependencies ++= Seq(akka)
+    libraryDependencies ++= Seq(akka_dep)
   )
-
-    
